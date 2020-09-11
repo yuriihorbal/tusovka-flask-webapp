@@ -84,8 +84,8 @@ def whos_tf_here(what_to_do="run"):
         cur.execute("DELETE FROM online_users WHERE ABS(time-?) > 1;", [now])
         con.commit()
 
-    # schedule next occurence in 3 minutes if not "stop"
-    watcher_thread = threading.Timer(180, whos_tf_here)
+    # schedule next occurence in 2 minutes if not "stop"
+    watcher_thread = threading.Timer(120, whos_tf_here)
     if what_to_do == "stop":
         print("[INFO] Kicker watchdog stopping..")
         watcher_thread.cancel()
