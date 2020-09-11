@@ -78,10 +78,10 @@ def about():
 def whos_tf_here(what_to_do="run"):
     now = datetime.datetime.now().minute
 
-    # kick inactive listeners if they were out for 6 minutes
+    # kick inactive listeners if they were out for 1 minute
     with sql.connect("active_users.db") as con:
         cur = con.cursor()
-        cur.execute("DELETE FROM online_users WHERE ABS(time-?) > 2;", [now])
+        cur.execute("DELETE FROM online_users WHERE ABS(time-?) > 1;", [now])
         con.commit()
 
     # schedule next occurence in 3 minutes if not "stop"
